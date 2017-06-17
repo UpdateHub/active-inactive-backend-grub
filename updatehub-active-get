@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh
 
 if [ -e /etc/default/updatehub-grubenv ]; then
 	. /etc/default/updatehub-grubenv
