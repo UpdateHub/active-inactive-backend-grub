@@ -1,12 +1,12 @@
 #!/bin/sh
 
 if [ -e /etc/default/updatehub-grubenv ]; then
-	. /etc/default/updatehub-grubenv
+    . /etc/default/updatehub-grubenv
 fi
 
 # If it requires a mount path, check it first
 if [ -n "$mount_path" ]; then 
-	mount | grep -q "$mount_path" || exit 1
+    mount | grep -q "$mount_path" || exit 1
 fi
 
 active=`grub-editenv $grubenv list | grep "updatehub_active="`
@@ -15,4 +15,5 @@ if [ -z "$active" ]; then
 fi
 
 echo "$active" | awk -F= '/updatehub_active=/ { print $2 }'
+
 exit 0

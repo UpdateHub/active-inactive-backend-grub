@@ -3,24 +3,24 @@
 active=$1
 
 if [ -e /etc/default/updatehub-grubenv ]; then
-	. /etc/default/updatehub-grubenv
+    . /etc/default/updatehub-grubenv
 fi
 
 # If it requires a mount path, check it first
 if [ -n "$mount_path" ]; then 
-	mount | grep -q "$mount_path" || exit 1
+    mount | grep -q "$mount_path" || exit 1
 fi
 
 if [ ! -e "$grubenv" ]; then
-	grub-editenv "$grubenv" create
+    grub-editenv "$grubenv" create
 fi
 
 case "$active" in
-	0|1)
-    grub-editenv "$grubenv" set updatehub_active=$active
-	exit $?
-	;;
-	*)
-	exit 1
-	;;
+    0|1)
+        grub-editenv "$grubenv" set updatehub_active=$active
+        exit $?
+        ;;
+    *)
+        exit 1
+        ;;
 esac
